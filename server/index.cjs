@@ -194,9 +194,16 @@ nextApp.prepare().then(() => {
   })
 
   // =========================
+  // HEALTH CHECK ROUTE
+  // =========================
+  app.get('/health', (req, res) => {
+    res.send('Server is running')
+  })
+
+  // =========================
   // NEXT.JS ROUTES
   // =========================
-  app.all('*', (req, res) => {
+  app.get(/.*/, (req, res) => {
     return handle(req, res)
   })
 
